@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.7.3 on win32)" generated="20190813 10:34:02.960" rpa="false">
+<suite id="s1" name="practice Compare" source="C:\Users\max.su\Downloads\github\Robot Framework Practice\Practice_Compare\practice_Compare.robot">
+<test id="s1-t1" name="Test DMI type">
+<kw name="Login SSH">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${host_addr}</arg>
+<arg>prompt=$</arg>
+</arguments>
+<msg timestamp="20190813 10:34:03.190" level="FAIL">Variable '${host_addr}' not found.</msg>
+<status status="FAIL" starttime="20190813 10:34:03.190" endtime="20190813 10:34:03.190"></status>
+</kw>
+<status status="FAIL" starttime="20190813 10:34:03.189" endtime="20190813 10:34:03.190"></status>
+</kw>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190813 10:34:03.196" endtime="20190813 10:34:03.196"></status>
+</kw>
+<doc>Verify DMI type.</doc>
+<tags>
+<tag>42</tag>
+<tag>dmitype42</tag>
+</tags>
+<status status="FAIL" starttime="20190813 10:34:03.187" endtime="20190813 10:34:03.197" critical="yes">Variable '${host_addr}' not found.</status>
+</test>
+<doc>This is a practice for comparing objects with Robot Framework.</doc>
+<status status="FAIL" starttime="20190813 10:34:02.969" endtime="20190813 10:34:03.202"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1">42</stat>
+<stat pass="0" fail="1">dmitype42</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" id="s1" name="practice Compare">practice Compare</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

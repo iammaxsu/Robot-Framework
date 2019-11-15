@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.7.3 on win32)" generated="20190827 17:17:56.895" rpa="false">
+<suite id="s1" name="Host Interface" source="C:\Users\max.su\Downloads\github\Robot Framework Practice\Test suite_host interface\host interface.robot">
+<test id="s1-t1" name="Test DMI type">
+<kw name="Login SSH">
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${host_addr}</arg>
+<arg>prompt=$</arg>
+</arguments>
+<status status="PASS" starttime="20190827 17:17:57.463" endtime="20190827 17:17:57.463"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${host_username}</arg>
+<arg>${host_password}</arg>
+</arguments>
+<assign>
+<var>${std_output}</var>
+</assign>
+<msg timestamp="20190827 17:17:57.463" level="INFO">Logging into '172.16.32.167:22' as 'max'.</msg>
+<msg timestamp="20190827 17:17:58.179" level="INFO">Read output: Welcome to Ubuntu 19.04 (GNU/Linux 5.0.0-25-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+
+108 updates can be installed immediately.
+0 of these updates are security updates.
+
+Last login: Tue Aug 27 17:16:09 2019 from 172.16.32.115
+max@max-desktop:~$</msg>
+<msg timestamp="20190827 17:17:58.179" level="INFO">C:\Users\max.su\AppData\Local\Programs\Python\Python37\lib\site-packages\paramiko\kex_ecdh_nist.py:39: CryptographyDeprecationWarning: encode_point has been deprecated on EllipticCurvePublicNumbers and will be removed in a future version. Please use EllipticCurvePublicKey.public_bytes to obtain both compressed and uncompressed point encoding.
+  m.add_string(self.Q_C.public_numbers().encode_point())
+C:\Users\max.su\AppData\Local\Programs\Python\Python37\lib\site-packages\paramiko\kex_ecdh_nist.py:96: CryptographyDeprecationWarning: Support for unsafe construction of public numbers from encoded data will be removed in a future version. Please use EllipticCurvePublicKey.from_encoded_point
+  self.curve, Q_S_bytes
+C:\Users\max.su\AppData\Local\Programs\Python\Python37\lib\site-packages\paramiko\kex_ecdh_nist.py:111: CryptographyDeprecationWarning: encode_point has been deprecated on EllipticCurvePublicNumbers and will be removed in a future version. Please use EllipticCurvePublicKey.public_bytes to obtain both compressed and uncompressed point encoding.
+  hm.add_string(self.Q_C.public_numbers().encode_point())</msg>
+<msg timestamp="20190827 17:17:58.204" level="INFO">${std_output} = Welcome to Ubuntu 19.04 (GNU/Linux 5.0.0-25-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/adv...</msg>
+<status status="PASS" starttime="20190827 17:17:57.463" endtime="20190827 17:17:58.204"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${std_output}</arg>
+<arg>$</arg>
+</arguments>
+<status status="PASS" starttime="20190827 17:17:58.204" endtime="20190827 17:17:58.205"></status>
+</kw>
+<status status="PASS" starttime="20190827 17:17:57.462" endtime="20190827 17:17:58.205"></status>
+</kw>
+<kw name="Write" library="SSHLibrary">
+<doc>Writes the given ``text`` on the remote machine and appends a newline.</doc>
+<arguments>
+<arg>su</arg>
+</arguments>
+<msg timestamp="20190827 17:17:58.226" level="INFO">su</msg>
+<status status="PASS" starttime="20190827 17:17:58.209" endtime="20190827 17:17:58.226"></status>
+</kw>
+<kw name="Write" library="SSHLibrary">
+<doc>Writes the given ``text`` on the remote machine and appends a newline.</doc>
+<arguments>
+<arg>${host_password}</arg>
+</arguments>
+<msg timestamp="20190827 17:17:58.236" level="INFO">Password:</msg>
+<status status="PASS" starttime="20190827 17:17:58.227" endtime="20190827 17:17:58.237"></status>
+</kw>
+<kw name="Execute Command" library="SSHLibrary">
+<doc>Executes ``command`` on the remote machine and returns its outputs.</doc>
+<arguments>
+<arg>dmidecode -t 42 | grep 0x004A | awk '{print $5}' | sed 's/.$//'</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<msg timestamp="20190827 17:17:58.238" level="INFO">Executing command 'dmidecode -t 42 | grep 0x004A | awk '{print $5}' | sed 's/.$//''.</msg>
+<msg timestamp="20190827 17:17:58.253" level="INFO">Command exited with return code 0.</msg>
+<msg timestamp="20190827 17:17:58.253" level="INFO">${text} = </msg>
+<status status="PASS" starttime="20190827 17:17:58.237" endtime="20190827 17:17:58.253"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${text}</arg>
+<arg>42</arg>
+</arguments>
+<msg timestamp="20190827 17:17:58.255" level="FAIL">'' does not contain '42'</msg>
+<status status="FAIL" starttime="20190827 17:17:58.254" endtime="20190827 17:17:58.255"></status>
+</kw>
+<kw name="Close All Connections" library="SSHLibrary" type="teardown">
+<doc>Closes all open connections.</doc>
+<status status="PASS" starttime="20190827 17:17:58.256" endtime="20190827 17:17:58.257"></status>
+</kw>
+<doc>Verify DMI type.</doc>
+<tags>
+<tag>42_test</tag>
+<tag>dmitype42</tag>
+</tags>
+<status status="FAIL" starttime="20190827 17:17:57.462" endtime="20190827 17:17:58.258" critical="yes">'' does not contain '42'</status>
+</test>
+<doc>Host Interface test (Configuration: BMC 3.93.07 and BIOS 4.08.10)</doc>
+<status status="FAIL" starttime="20190827 17:17:56.917" endtime="20190827 17:17:58.295"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1">42_test</stat>
+<stat pass="0" fail="1">dmitype42</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" id="s1" name="Host Interface">Host Interface</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
